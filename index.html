@@ -1,208 +1,277 @@
-<html>
-      <head>
-            <style>
-                  @font-face { font-family: suisse;
-                               src:url("fonts/SuisseIntl-Light.otf");
-                 }
-                  body { margin: 0px;
-                  }
-                  header { font-family:suisse;
-                           font-size: 24pt;
-                           color:black;
-                           text-align: left;
-                  }
-                  header:hover span{ text-decoration: underline;
-                                     font-style: italic;
-                  }
-                 .wrapper { width:100%;
-                            height: 100%;
-                            display: flex;}
-                 .main { width: 100%;
-                 }
-                  .header_div { background: white;
-                                width: 100%;
-                                height: 40px;
-                                padding: 10px;
-                                display: grid;
-                                grid-template-columns:1fr 40px;
-                  }
-                  .projects {   background: white;
-                                width: 100%;
-                                height: auto;
-                                transition: 1s all;
-                                cursor: url("mouse-01.png"), auto;
-                  }
-                  .head_row {       grid-column:1/4;
-                                    display: grid;
-                                    grid-template-columns: 150px 5fr;
-                                    font-family:suisse;
-                                    font-size: 12pt;
-                                    color:black;
-                                    border-top-style: solid;
-                                    border-top-width: thin;
-                                    border-bottom-style: solid;
-                                    border-bottom-width: thin;
-                  }
-                  .head_row p:nth-child(2) { border-left-style: solid;
-                                          border-left-width: thin;
-                  }
-                  .head_row p {   display: block;
-                                  -webkit-margin-before: 0px;
-                                  -webkit-margin-after: 0px;
-                                  -webkit-margin-start: 0px;
-                                  -webkit-margin-end: 0px;
-                                  display:inline;
-                                  align-items: center;
-                                  padding-left: 10px;
-                  }
-                  .items {       grid-column:1/4;
-                                 display: grid;
-                                 grid-template-columns: 150px 5fr;
-                                 grid-template-rows: 1fr;
-                                 background: white;
-                                 width: 100%;
-                                 height:40px;
-                                 font-family:suisse;
-                                 font-size: 12pt;
-                                 color:black;
-                                 border-bottom-style: solid;
-                                 border-bottom-width: thin;
-                                 z-index: 1;
-                                 overflow: hidden;
-                                 transition: 0.5s all;
-                  }
-                  .items:hover { background: #2222;
-                          }
-                  .date { grid-column: 1/2;
-                          }
-                  .name { grid-column: 2/3}
-                  .items p {     display: block;
-                          -webkit-margin-before: 0px;
-                          -webkit-margin-after: 0px;
-                          -webkit-margin-start: 0px;
-                          -webkit-margin-end: 0px;
-                          display:inline;
-                          align-items: center;
-                          padding: 10px;
-                  }
-                  img { display: none;
-                        z-index: 0;
-                        padding: 0.5em;
-                        width:300px;
-                        }
-                  .draggable {  position: absolute;
-                                top: 300px;
-                                left: 300px;
-                  }
-              .collophon {      display:grid;
-                                grid-template-rows: 1fr 1fr 1fr 1fr;
-                                grid-template-columns: 1fr 2fr;
-                                width: 0px;
-                                height: auto;
-                                background: white;
-                                z-index: 999;
-                                border-left-style: solid;
-                                border-left-width: thin;
-                                border-left-color: black;
-                                overflow: hidden;
-                                transition: 0.5s all;
-                         }
-               .collophon p:nth-child(odd) {    grid-column: 1/2;
-                                                font-family:suisse;
-                                                margin:0px;
-                                                padding: 10px;
-                                                font-size: 12pt;
-                                                color:black;
-               }
-               .collophon p:nth-child(even) {   grid-column: 2/3;
-                                                font-family:suisse;
-                                                margin:0px;
-                                                padding: 10px;
-                                                font-size: 12pt;
-                                                color:black;}
-               .collophon_open {  width: 500px;
-                                  transition: 1s all;
-                                  box-shadow: 15px 0px 60px black}
-               .title   { grid:1/2; }
-               .info   { grid:2/3;
-                         display: flex;
-                         align-items: center;
-                       }
-               .info p  { font-family:Suisse;
-                          font-size: 18pt;
-                          color:black;
-                          text-align: right;
-                          cursor: default;
-                          -webkit-margin-before: 0px;
-                          -webkit-margin-after: 0px; }
-                .tool { width: 90px;
-                        height: 40px;
-                        background: white;
-                        border-style: solid;
-                        border-width: thin;
-                        position: fixed;
-                        left: 20px;
-                        bottom: 20px;
-                        display: flex;
-                        align-items: center;
-                        padding-left:10px;
-                        padding-right: 10px;
-                        justify-content: space-around;
-                        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-                }
-                .tool p{ font-size: 15pt;
-                }
-                .trash { cursor: alias;
-                }
-                .reload { cursor: pointer;
-                }
-                .items_open { height: 200px;
-                              transition: 0.5s all;
-                }
-                .desc { display:grid;
-                        grid-template-rows: 50px 1fr;
-                        grid-template-columns: 1fr;
-                }
-                .desc p { grid-column: 1/2;
-                          border-left-style: solid;
-                          border-left-width: thin;
-                }
-            </style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <title>AJ Hansen Unit X</title>
+      <style>
+        body {
+          margin: 0px;
+          background: whitesmoke;
+        }
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      </head>
+        em {
+          font-weight: bold;
+          font-style: normal;
+        }
+
+        header {
+          font-family: 'Work Sans', sans-serif;
+          font-size: 24pt;
+          font-weight: bold;
+          color: black;
+          text-align: left;
+        }
+
+        .wrapper {
+          width:100%;
+          height: 100%;
+          display: flex;
+        }
+
+        .main { width: 100%;
+        }
+
+        .header_div {
+          background: lightgrey;
+          width: 100%;
+          height: 40px;
+          padding: 10px;
+          display: grid;
+          grid-template-columns:1fr 40px;
+        }
+
+        .projects {
+          background: transparent;
+          width: 100%;
+          height: auto;
+          transition: 1s all;
+          cursor: url("mouse-01.png"), auto;
+        }
+
+        .head_row {
+          grid-column:1/4;
+          display: grid;
+          grid-template-columns: 230px 5fr;
+          font-family: 'Work Sans', sans-serif;
+          font-size: 12pt;
+          font-weight: bold;
+          color: black;
+          border-top-style: solid;
+          border-top-width: thin;
+          border-bottom-style: solid;
+          border-bottom-width: thin;
+        }
+
+        .head_row p:nth-child(2) {
+          border-left-style: solid;
+          border-left-width: thin;
+        }
+
+        .head_row p {
+          display: block;
+          -webkit-margin-before: 0px;
+          -webkit-margin-after: 0px;
+          -webkit-margin-start: 0px;
+          -webkit-margin-end: 0px;
+          display: inline;
+          align-items: center;
+          padding-left: 10px;
+        }
+
+        .items {
+          grid-column:1/4;
+          display: grid;
+          grid-template-columns: 230px 5fr;
+          grid-template-rows: 1fr;
+          background: whitesmoke;
+          width: 100%;
+          height:40px;
+          font-family: 'Work Sans', sans-serif;
+          font-size: 12pt;
+          color:black;
+          border-bottom-style: solid;
+          border-bottom-width: thin;
+          z-index: 1;
+          overflow: hidden;
+          transition: 0.5s all;
+        }
+
+        .items:hover {
+          background: #2222;
+        }
+
+        .date {
+          grid-column: 1/2;
+        }
+
+        .name {
+          grid-column: 2/3
+        }
+
+        .items p {
+          display: block;
+          -webkit-margin-before: 0px;
+          -webkit-margin-after: 0px;
+          -webkit-margin-start: 0px;
+          -webkit-margin-end: 0px;
+          display:inline;
+          align-items: center;
+          padding: 10px;
+        }
+        img {
+          display: none;
+          z-index: 0;
+          padding: 0.5em;
+          width:350px;
+        }
+
+        .draggable {
+          position: absolute;
+          top: 300px;
+          right: 0px;
+        }
+
+        .collophon {
+          display:grid;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 2fr;
+          width: 0px;
+          height: auto;
+          background: whitesmoke;
+          z-index: 999;
+          border-left-style: solid;
+          border-left-width: thin;
+          border-left-color: black;
+          overflow: hidden;
+          transition: 0.5s all;
+        }
+
+        .collophon p:nth-child(odd) {
+          grid-column: 1/2;
+          font-family:'Work Sans', sans-serif;
+          margin:0px;
+          padding: 10px;
+          font-size: 12pt;
+          color:black;
+        }
+
+        .collophon p:nth-child(even) {
+          grid-column: 2/3;
+          font-family:'Work Sans', sans-serif;
+          margin:0px;
+          padding: 10px;
+          font-size: 12pt;
+          color:black;
+        }
+
+        .collophon_open {
+          width: 500px;
+          transition: 1s all;
+        }
+
+        .title {
+          grid:1/2;
+        }
+
+        .info {
+          grid:2/3;
+          display: flex;
+          align-items: center;
+        }
+
+        .info p  {
+          font-family: 'Work Sans', sans-serif;
+          font-size: 18pt;
+          color:black;
+          text-align: right;
+          cursor: default;
+          -webkit-margin-before: 0px;
+          -webkit-margin-after: 0px;
+        }
+
+        .tool {
+          width: 40px;
+          height: 45px;
+          background: lightgrey;
+          border-style: solid;
+          border-width: thin;
+          position: fixed;
+          left: 20px;
+          bottom: 20px;
+          display: flex;
+          align-items: center;
+          padding-left:10px;
+          padding-right: 10px;
+          justify-content: space-around;
+        }
+
+        .tool p{
+          font-size: 17pt;
+        }
+
+        .trash {
+          cursor: alias;
+        }
+
+        .items_open {
+          height: 30vw;
+          transition: 0.5s all;
+        }
+
+        .desc {
+          display:grid;
+          grid-template-rows: 50px 1fr;
+          grid-template-columns: 1fr;
+        }
+
+        .desc p {
+          grid-column: 1/2;
+          border-left-style: solid;
+          border-left-width: thin;
+        }
+      </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
 
 
       <body>
-            <div class="wrapper">
+        <div class="wrapper">
 
-              <div class="main">
-                  <div class="header_div">
-                    <div class="title"> <header> DEPARTMENT OF MISCELLANEOUS <span> FILES </span> </header> </div>
-                    <div class="info"> <p>?</p> </div>
-                    </div>
+        <div class="main">
+          <div class="header_div">
+            <div class="title"> <header> DESIGN STUDIO 4</header> </div>
+            <div class="info"> <p>?</p>
+          </div>
+        </div>
 
                     <div class="projects">
                       <div class='head_row'>
-                          <p> DATE </p>
-                          <p> FILE NAME </p> </div>
+                          <p> UNIT </p>
+                          <p> ASSIGNMENT </p> </div>
 
                           <div class='items'>
-                                <p class="date"> 27-11-2017 </p>
+                                <p class="date"> Unit 15: Questions </p>
                                 <div class="desc">
-                                  <p class="name"> A HOUSE OF DUST </p>
-                                  <p class="project_about"> A digital, "born-again" rendition of Alison Knowles' <i>A House of Dust</i>.<br /> <br /> Made with P5.js. <br /> Digital Poetics with Mairead Byrne <br /> RISD Spring 2018.  </p>
+                                  <p class="name"> WHAT IS GRAPHIC DESIGN? </p>
+                                  <p class="project_about"> A <a href="https://andreajanehansen.com" target="_blank">presentation</a> on where I am as a graphic designer and where I would like to be going.<br/>
+                                    <br/>
+                                    <em>Reflection</em><br/>
+                                    The creation of these pecha kuchas was not my favorite way to spend a day.
+                                    However, after listening to everyone's presentations and uncovering connections between the different subject matter, most people were able to stretch the question "what is graphic design?" into something pretty interesting.
+                                    For myself, I chose to approach my questions with a subtle humor, using only Google Image-sourced memes to populate my backgrounds.
+                                    After having taken a step back, I think the pecha kucha presentation mode is a graphic design constraint and tool I would like to revisit.</p>
                                 </div>
                                 <div class="draggable">
-                                  <img src="gifs/house.gif">
+                                  <img src="img/presentation.jpg">
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 15-10-2017 </p>
+                                <p class="date"> Unit 15: Questions </p>
                                 <div class="desc">
-                                  <p class="name"> SNAKE GAME </p>
+                                  <p class="name"> GRAPHIC DESIGN SCRUBS </p>
                                   <p class="project_about"> Re-imagining the snake game into something more relevant to me...and my upbringing. <br /><br /> Made with P5.js. <br /> Intro To Computation with Chris Novello <br /> RISD Spring 2017.  </p>
                                 </div>
 
@@ -212,9 +281,9 @@
 
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 15: Questions </p>
                                 <div class="desc">
-                                  <p class="name"> STICKS & STONES </p>
+                                  <p class="name"> CODE OF ETHICS FOR GRAPHIC DESIGN CAREGIVERS </p>
                                   <p class="project_about"> Exploring CSS animations and transitions with SVGs.<br /> <br /> Web Programming with John Caserta<br /> RISD Spring 2018.  </p>
                                 </div>
 
@@ -223,9 +292,9 @@
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 16: Working Together </p>
                                 <div class="desc">
-                                  <p class="name"> THE HANDOVER </p>
+                                  <p class="name"> COLLABORATION COMPENDIUM </p>
                                   <p class="project_about"> July 1st 1997, at the strike of midnight, Hong Kong was "handed back" to China. This is a digital experience using archived videos of this monumental ceremony I was too young to experience. <br /> <br /> Made with P5.js <br /> Design Studio 4 with Lucinda Hitchcock<br /> RISD Fall 2018.  </p>
                                 </div>
 
@@ -234,9 +303,9 @@
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 16: Working Together </p>
                                 <div class="desc">
-                                  <p class="name"> RESPONSIVE MOBILE CHILE</p>
+                                  <p class="name"> ANTI ANTI ALIASING</p>
                                   <p class="project_about"> The flag of Chile made with HMTL/CSS and mediasqueries <br /> <br /> Web Programming with John Caserta<br /> RISD Spring 2018.  </p>
                                 </div>
 
@@ -245,9 +314,9 @@
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 16: Working Together </p>
                                 <div class="desc">
-                                  <p class="name"> FLAG PROJECT </p>
+                                  <p class="name"> BDEHD </p>
                                   <p class="project_about"> RISD GD needs a flag! This one constanly changes.<br /> <br /> Design Studio 1 <br /> RISD Fall 2016.  </p>
                                 </div>
 
@@ -256,9 +325,9 @@
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 16: Working Together </p>
                                 <div class="desc">
-                                  <p class="name"> BLUE MONDAY</p>
+                                  <p class="name"> CURE</p>
                                   <p class="project_about"> Joy Division's Blue Monday album made into a keyboard language. <br /> <br /> Design Studio 1<br /> RISD Fall 2016.  </p>
                                 </div>
 
@@ -267,9 +336,9 @@
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 17: Packaging </p>
                                 <div class="desc">
-                                  <p class="name"> KOMODO NATIONAL PARK</p>
+                                  <p class="name"> INTEREST CARDS</p>
                                   <p class="project_about"> Concept for a website for the Komodo National Park. As part of an identity project for a World Heritage Site.<br /> <br /> Typography III with Doug Scott<br /> RISD Fall 2018.  </p>
                                 </div>
 
@@ -278,9 +347,9 @@
                                 </div>
                           </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 17: Packaging </p>
                                 <div class="desc">
-                                  <p class="name"> NEWS FEED</p>
+                                  <p class="name"> MOTHERHOOD BOOK </p>
                                   <p class="project_about"> A sketch that takes real time news headlines from the New York Times API. <br /> <br /> Intro to Computation with Chris Novello <br /> RISD Spring 2017.  </p>
                                 </div>
 
@@ -288,21 +357,11 @@
                                   <img src="gifs/feed.gif">
                                 </div>
                           </div>
-                          <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
-                                <div class="desc">
-                                  <p class="name"> HTML Color Studies </p>
-                                  <p class="project_about"> An abstract sketch using colors and HTML/CSS div tags etc. <br /> <br /> Web Programming with John Caserta <br /> RISD Spring 2018.  </p>
-                                </div>
 
-                                <div class="draggable">
-                                  <img src="gifs/color.gif">
-                                </div>
-                          </div>
                           <div class='items'>
-                                <p class="date"> 05-20-2014 </p>
+                                <p class="date"> Unit 18: Open Field </p>
                                 <div class="desc">
-                                  <p class="name"> HTML Color Studies 2.0 </p>
+                                  <p class="name"> PARADISE LOST & WON </p>
                                   <p class="project_about"> An abstract sketch using colors and HTML/CSS div tags etc. <br /> <br /> Web Programming with John Caserta <br /> RISD Spring 2018.  </p>
                                 </div>
 
@@ -311,10 +370,6 @@
                                 </div>
                           </div>
 
-                          <div class='items'>
-                            <p class="date"></p>
-                            <p class="name"></p>
-                          </div>
 
                           <div class='items'>
                             <p class="date"></p>
@@ -325,11 +380,15 @@
                             <p class="date"></p>
                             <p class="name"></p>
                           </div>
+
                           <div class='items'>
                             <p class="date"></p>
                             <p class="name"></p>
                           </div>
-
+                          <div class='items'>
+                            <p class="date"></p>
+                            <p class="name"></p>
+                          </div>
                           <div class='items'>
                             <p class="date"></p>
                             <p class="name"></p>
@@ -347,25 +406,20 @@
 
                 </div>
               <div class="collophon">
-                        <p>GENERAL</p>
-                        <p>This is where Stephanie keeps all her uncategorized,
-                        unfinished, unrealized, unseen, unpolished computational sketches.</p>
+                        <p>UNIT X</p>
+                        <p>Work in progress throughout the semester, unit by unit.
+                          How does reflection relate to the practice of making and thinking?
+                          Savor your experience of insight.
+                          Nurture the reflective practice on your DS work and record these via writing with visual support as needed.
+                          Reflect on your experiences, curiosities, interests, challenges, observations. Use any writing style that feels comfortable and natural to you — but practice this with sincerity. </p>
 
-                        <p>TYPEFACES </p>
-                        <p>Suisse Works / Suisse Int'l</p>
-
-                        <p>+ INFO.</p>
-                        <p>Stephanie is Junior in Graphic Design at RISD. This is her first ever website, please don't judge too hard.</p>
-
-                        <p></p>
-                        <p>Made as part of the Web Programming WorkShop By John Caserta. RISD Spring 2018.</p>
+                        <p>INFO</p>
+                        <p>AJ is Junior in Graphic Design at RISD. She's not very good at coding so if there are bugs
+                          in this site, please have mercy.</p>
                 </div>
 
-                <div class="tool">  <p class="trash"> 🗑 </p> <p class='reload'> ↺ </p></div>
+                <div class="tool">  <p class="trash">🗑</p></div>
             </div>
-
-
-
 
   </body>
 
@@ -399,9 +453,6 @@
             })
       </script>
 
-
-
-
       <!-- <script>
         $( ".head_row" ).hover(
           function() {
@@ -411,7 +462,4 @@
           }
 );
       </script> -->
-
-
-
 </html>
