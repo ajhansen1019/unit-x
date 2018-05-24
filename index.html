@@ -8,6 +8,7 @@
         body {
           margin: 0px;
           background: mistyrose;
+          cursor: url("img/mouse.png"), auto;
         }
 
         em {
@@ -52,7 +53,7 @@
           width: 100%;
           height: auto;
           transition: 1s all;
-          cursor: url("mouse-01.png"), auto;
+          cursor: url("img/mouse.png"), auto;
         }
 
         .head_row {
@@ -121,23 +122,16 @@
           -webkit-margin-after: 0px;
           -webkit-margin-start: 0px;
           -webkit-margin-end: 0px;
-          display:inline;
+          display: inline;
           align-items: center;
           padding: 10px;
         }
-        img {
-          display: inline-block;
+
+        .desc img {
+          grid-column: 2/2;
           z-index: 0;
           padding: 0.5em;
-          width:350px;
-          border-left-style: solid;
-          border-left-width: thin;
-        }
-
-        .draggable {
-          position: absolute;
-          top: 300px;
-          right: 0px;
+          height: 250px;
         }
 
         .collophon {
@@ -223,12 +217,12 @@
         }
 
         .items_open {
-          height: 500px;
+          height: 400px;
           transition: 0.5s all;
         }
 
         .desc {
-          display:grid;
+          display: grid;
           grid-template-rows: 50px 1fr;
           grid-template-columns: 1fr;
         }
@@ -267,7 +261,8 @@
               <p class="project_about">I created a <a href="https://docs.google.com/presentation/d/17C5AW6hlFUJErOwYJsAGI7nUXPbqfgtjKbMYXdQFwTc/edit#slide=id.p" target="_blank">presentation</a> about where I am as a graphic designer and where I would like to be going.<br/>
               <br/>
               <em>Reflection</em><br/>
-              The creation of these pecha kuchas was not my favorite way to spend a day. However, after listening to everyone's presentations and uncovering connections between the different subject matter, most people were able to stretch the question "what is graphic design?" into something pretty interesting. For myself, I chose to approach my questions with a subtle humor, using only Google Image-sourced memes to populate my backgrounds. After having taken a step back, I think the pecha kucha presentation mode is a graphic design constraint and tool I would like to revisit.</p>
+              The creation of these pecha kuchas was not my favorite way to spend a day. However, after listening to everyone's presentations and uncovering connections between the different subject matter, most people were able to stretch the question "what is graphic design?" into something pretty interesting. For myself, I chose to approach my questions with a subtle humor, using only Google Image-sourced memes to populate my backgrounds. After having taken a step back, I think the pecha kucha presentation mode is a graphic design constraint and tool I would like to revisit.
+              </p>
               <img src="img/presentation.jpg">
             </div>
           </div>
